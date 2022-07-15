@@ -1,5 +1,6 @@
 import Fluent
 import Vapor
+import Foundation
 
 func routes(_ app: Application) throws {
     app.get { req in
@@ -9,6 +10,13 @@ func routes(_ app: Application) throws {
     app.get("hello") { req -> String in
         return "Hello, world!"
     }
-
-    try app.register(collection: TodoController())
+    
+    let acronymsController = AcronymsController()
+    try app.register(collection: acronymsController)
+    
+    let usersController = UsersController()
+    try app.register(collection: usersController)
+    
+    let categoriesController = CategoriesController()
+    try app.register(collection: categoriesController)
 }
